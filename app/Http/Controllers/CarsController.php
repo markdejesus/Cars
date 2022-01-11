@@ -8,8 +8,8 @@ class CarsController extends Controller
 {
     public function index(){
         $brands = ['ford', 'toyota', 'honda', 'hyundai', 'mitsubishi', 'subaru', 'rolls royce'];
-        $cars = \App\Models\Car::all();
-        
+        $cars = \App\Models\Car::paginate(15);
+
         return view('welcome', array('brands' => $brands, 'cars'=>$cars));
     }
 
@@ -27,5 +27,5 @@ class CarsController extends Controller
         \App\Models\Car::find($form->id)->delete();
             return redirect ('/');
     }
-    
+
 }
